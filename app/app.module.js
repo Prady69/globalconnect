@@ -1,10 +1,7 @@
 'use strict';
 
-// Define the `phonecatApp` module
-angular.module('phonecatApp', [
+angular.module('globalconnectApp', [
   'ngAnimate',
   'ngRoute',
-  'core',
-  'phoneDetail',
-  'phoneList'
+  'ngMaterial'
 ]);

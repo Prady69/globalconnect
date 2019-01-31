@@ -1,0 +1,37 @@
+<md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop="" md-whiteframe="4">
+
+    <md-toolbar class="md-theme-indigo">
+        <div class="logo-globalconnect">
+            <i class="glyphicon glyphicon-circle-arrow-right"></i>
+            <i class="glyphicon glyphicon-globe"></i>
+            <i class="glyphicon glyphicon-circle-arrow-left"></i>
+            <span class="company-name">Global Connect</span>
+        </div>
+        <i class="glyphicon glyphicon-menu-hamburger" ng-click="$ctrl.toggleLeft()"></i>
+        <i class="glyphicon glyphicon-remove" ng-click="$ctrl.toggleLeft()"></i>
+    </md-toolbar>
+    <md-content>
+        <ul class="menu">
+            <a href="#!delivery">
+                <li title="Start new delivery">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>New Delivery</span>
+                </li>
+            </a>
+            <a href="#!orders">
+                <li title="My current deliveries">
+                    <i class="glyphicon glyphicon-pushpin"></i>
+                    <span>My Deliveries</span>
+                    <span class="badge" ng-if="$ctrl.currentDeliveryCount">{{$ctrl.currentDeliveryCount}}</span>
+                </li>
+            </a>
+            <a href="#!history">
+                <li title="Show history">
+                    <i class="glyphicon glyphicon-refresh"></i>
+                    <span>History</span>
+                    <span class="badge" ng-if="$ctrl.pastDeliveryCount">{{$ctrl.pastDeliveryCount}}</span>
+                </li>
+            </a>
+        </ul>
+    </md-content>
+</md-sidenav>

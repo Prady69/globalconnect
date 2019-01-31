@@ -1,0 +1,332 @@
+$primary-page-color: #337ab7;
+$font-stack : 'Roboto', sans-serif;
+
+body{
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+
+  .badge{
+    font-size: 18px;
+    background: red;
+    float: right;
+  }
+  .md-char-counter{
+    display: none;
+  }
+  
+  .md-sidenav-left{
+    position: fixed;
+    background: $primary-page-color;
+
+    a{
+      color: inherit;
+    }
+
+    a:hover{
+      text-decoration: none;
+    }
+    .md-theme-indigo{
+      height: 75px;
+    }
+    &:not(.md-closed) {
+      .md-theme-indigo {
+        height: 75px;
+        padding: 5px 0;
+        border-bottom: 2px solid;
+        background: $primary-page-color;
+
+        .logo-globalconnect{
+            margin-left: 5px;
+            color: #fff;
+            i {
+              color: #fff;
+              &:first-child {
+                left: 6px;
+                top: -20px;
+              }
+              &:nth-child(2){
+                font-size: 50px;
+                top: 6px;
+              }
+              &:nth-child(3){
+                right: 5px;
+              }
+            }
+            .company-name{
+              position: relative;
+              font-size: 22px;
+              width: 40px;
+              font-weight: 800;
+              display: inline-block;
+            }
+        }
+
+
+        .glyphicon-remove {
+          position: absolute;
+          right: 20px;
+          top: 30%;
+          font-size: 25px;
+          cursor: pointer;
+        }
+        .glyphicon-menu-hamburger {
+          display: none;
+        }
+      }
+    }
+    &.md-closed{
+      display: block;
+      transform: translate3d(-80%, 0, 0);
+
+      .menu{
+        padding-right: 12px;
+        li{
+          position: relative;
+          i{
+            left: 92%;
+          }
+          span{
+            display: none;
+          }
+          .badge{
+            display: block;
+            position: absolute;
+            right: -5px;
+            top: 10px;
+            font-size: 12px;
+          }
+        }
+      }
+      .md-theme-indigo{
+        border-bottom: 2px solid;
+        background: $primary-page-color;
+        .glyphicon-menu-hamburger{
+          position: absolute;
+          right: 20px;
+          top: 30%;
+          font-size: 25px;
+          cursor: pointer;
+        }
+        .glyphicon-remove{
+          display: none;
+        }
+      }
+    }
+    md-content{
+      background: $primary-page-color;
+
+      ul{
+        margin-top: 40px;
+        padding: 0 20px;
+
+        li{
+          color: white;
+          font-size: 20px;
+          padding: 15px;
+          border-bottom: 1px solid #fff;
+          cursor: pointer;
+          position: relative;
+
+          &:hover{
+            font-size: 22px;
+          }
+
+          i{
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  nav.navbar{
+    height: 75px;
+    padding: 15px 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+
+    .container-fluid {
+        padding-left: 70px;
+        .navbar-header {
+          padding: 15px 10px;
+        }
+      }
+    }
+
+  .body-content {
+    width: 100%;
+
+    .panel{
+      .panel-heading{
+        height: 40px;
+        .panel-title{
+          width: 80%;
+          float: left;
+          font-size: 20px;
+        }
+        .glyphicon-ok{
+          width: 20%;
+          text-align: right;
+          font-size: 20px;
+          color: #76d927;
+        }
+      }
+    }
+
+    &.current-delivery{
+      .main-container{
+        width: 100%;
+
+        label.not-found{
+          font-size: 30px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        .panel-body{
+          padding-top: 0;
+        }
+      }
+
+      .table{
+        tr:nth-last-child(1){
+          border:none;
+          td{
+            border:none;
+          }
+        }
+      }
+    }
+    .main-container {
+      position: relative;
+      height: 90vh;
+      padding-left: 5%;
+      margin-right: 4%;
+
+      .route-panel {
+        height: auto;
+
+        .row{
+          max-height: 50%;
+          position: relative;
+
+          div:nth-child(1){
+            position: relative;
+            top: 35px;
+          }
+          div.location-dd{
+            position: relative;
+            top: 22px;
+          }
+          div.address{
+            top: 10px;
+            textarea {
+              max-height: 50px;
+              overflow: auto;
+            }
+          }
+        }
+      }
+
+      .freight-panel {
+        height: auto;
+
+        .label-type{
+          top: 12px;
+        }
+        #typeOfGoods {
+          md-radio-button {
+            display: inline-block;
+            float: left;
+            border: 1px solid black;
+            padding: 10px 30px;
+
+            &.md-checked {
+              background: darkblue;
+              color: #ffffff;
+            }
+            .md-label {
+              margin: 0;
+            }
+            .md-container {
+              display: none;
+            }
+          }
+        }
+        md-input-container {
+          label {
+            font-weight: 400;
+            margin-bottom: 0;
+            padding: 0 15px !important;
+          }
+          .md-errors-spacer {
+            display: none;
+          }
+        }
+        .cross {
+          position: relative;
+          top: 25px;
+          left: 15px;
+        }
+        .size-details{
+          md-input-container{
+            padding-right: 5px;
+            padding-left: 5px;
+            margin: 10px 0;
+          }
+        }
+        .weight-container {
+          .weight-label {
+            position: relative;
+            top: 25px;
+          }
+          .unit-label {
+            position: absolute;
+            top: 12px;
+            font-size: 15px;
+            right: -15px;
+          }
+        }
+      }
+
+      .date-panel{
+        height: auto;
+
+        .time {
+          position: relative;
+          top: -20px;
+          left: -30px;
+        }
+      }
+    }
+  }
+  .g-maps{
+    height: 50vh;
+    position: relative;
+    width: auto;
+  }
+  .md-autocomplete-suggestions {
+      .flag-img {
+          width: 25px;
+      }
+      .result {
+          font-size: 20px;
+          padding: 2px;
+          top: 3px;
+          position: relative;
+      }
+  }
+
+  .billing-panel{
+    margin-top: 10px;
+    .panel-body{
+      padding-top: 0;
+    }
+  }
+  .md-button.md-default-theme:not([disabled]):hover{
+    background:  $primary-page-color;
+    color: #fff;
+  }
+}

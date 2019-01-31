@@ -1,16 +1,19 @@
 'use strict';
 
 angular.
-  module('phonecatApp').
+  module('globalconnectApp').
   config(['$routeProvider',
     function config($routeProvider) {
       $routeProvider.
-        when('/phones', {
-          template: '<phone-list></phone-list>'
+        when('/delivery', {
+          template: '<new-delivery></new-delivery>'
         }).
-        when('/phones/:phoneId', {
-          template: '<phone-detail></phone-detail>'
+        when('/orders',{
+          template: '<current-delivery></current-delivery>'
         }).
-        otherwise('/phones');
+        when('/history',{
+            template: '<history></history>'
+        }).
+      otherwise('/delivery');
     }
   ]);

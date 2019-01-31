@@ -1,0 +1,55 @@
+<sidenav></sidenav>
+<navbar></navbar>
+
+<div class="body-content current-delivery">
+    <div class="main-container col-xs-6">
+        <div ng-if="$ctrl.currentDeliveryCount > 0">
+        <h3>Current orders: {{$ctrl.currentDeliveryCount}}</h3>
+        <section class="panel panel-primary" ng-repeat="item in $ctrl.currentOrders">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{item.id}} </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{item.username}}</td>
+                    </tr>
+                    <tr>
+                        <td>Route</td>
+                        <td>
+                            From {{item.routeDetails.pickupCountry.name}}
+                            To {{item.routeDetails.deliveryCountry.name}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Estimated Distance</td>
+                        <td>{{item.calculations.estimatedDistance}} kms</td>
+                    </tr>
+                    <tr>
+                        <td>Estimated Fare</td>
+                        <td>{{item.calculations.estimatedFare}} euros</td>
+                    </tr>
+                    <tr>
+                        <td>Pickup Date</td>
+                        <td>{{$ctrl.getFormattedDate(item.dateTimeDetails.pickupDate)}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="pull-right">
+                            <md-button class="md-primary md-raised" ng-click="$ctrl.showConfirmForCancel(item.id)">
+                                Cancel order
+                            </md-button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        </div>
+
+
+        <label class="not-found" ng-if="$ctrl.currentDeliveryCount === 0">No orders found. Start a <a href="#!delivery">new delivery now.</a></label>
+    </div>
+</div>

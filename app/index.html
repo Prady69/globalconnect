@@ -1,34 +1,39 @@
 <!doctype html>
-<html lang="en" ng-app="phonecatApp">
+<html lang="en" ng-app="globalconnectApp">
   <head>
     <meta charset="utf-8">
-    <title>Google Phone Gallery</title>
+    <title>Global Connect</title>
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="app.css" />
-    <link rel="stylesheet" href="app.animations.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="lib/angular-material/angular-material.css">
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  </head>
+  <body id="golbal-connect">
+    <div class="view-container">
+      <div ng-view class="view-frame"></div>
+    </div>
+
 
     <script src="lib/jquery/dist/jquery.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-animate/angular-animate.js"></script>
     <script src="lib/angular-resource/angular-resource.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="lib/angular-material/angular-material.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
     <script src="app.module.js"></script>
     <script src="app.config.js"></script>
-    <script src="app.animations.js"></script>
-    <script src="core/core.module.js"></script>
-    <script src="core/checkmark/checkmark.filter.js"></script>
-    <script src="core/phone/phone.module.js"></script>
-    <script src="core/phone/phone.service.js"></script>
-    <script src="phone-list/phone-list.module.js"></script>
-    <script src="phone-list/phone-list.component.js"></script>
-    <script src="phone-detail/phone-detail.module.js"></script>
-    <script src="phone-detail/phone-detail.component.js"></script>
-  </head>
-  <body>
-
-    <div class="view-container">
-      <div ng-view class="view-frame"></div>
-    </div>
+    <script src="components/delivery/new-delivery.component.js"></script>
+    <script src="components/navbar/navbar.component.js"></script>
+    <script src="components/sidenav/sidenav.component.js"></script>
+    <script src="components/current-delivery/current-delivery.component.js"></script>
+    <script src="components/history/history.component.js"></script>
+    <script src="resources/Countries.js"></script>
 
   </body>
 </html>

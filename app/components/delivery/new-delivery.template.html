@@ -1,0 +1,208 @@
+
+<sidenav></sidenav>
+<navbar></navbar>
+<div class="body-content new-delivery">
+    <div class="main-container col-xs-6">
+        <section class="panel panel-primary route-panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Route</h3>
+                <i class="glyphicon glyphicon-ok" ng-if="$ctrl.forms.routeForm.$valid"></i>
+            </div>
+            <div class="panel-body">
+                <form name="$ctrl.forms.routeForm" novalidate>
+                    <div class="row pickup">
+                        <div class="col-xs-2">Pickup</div>
+                        <div class="col-xs-4 location-dd">
+                            <md-autocomplete
+                                    md-selected-item="$ctrl.deliveryObj.routeDetails.pickupCountry"
+                                    md-search-text="searchPickup"
+                                    md-items="item in $ctrl.query(searchPickup)"
+                                    placeholder="Enter country name"
+                                    md-item-text="item.name"
+                                    md-selected-item-change="$ctrl.selectedCountryChange()"
+                                    md-require-match
+                                    required
+                                    flex>
+                                <md-item-template>
+                                    <img class="flag-img" ng-src="{{item.flag}}" />
+                                    <span class="result" md-highlight-text="searchPickup">{{item.name}}</span>
+                                </md-item-template>
+                                <md-not-found>
+                                    No states matching "{{ctrl.searchPickup}}" were found.
+                                </md-not-found>
+                            </md-autocomplete>
+                        </div>
+                        <div class="col-xs-6 address">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Address</label>
+                                <textarea name="pickup-address" ng-model="$ctrl.deliveryObj.routeDetails.pickupAddress" required md-maxlength="50" autocomplete="off"></textarea>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="row delivery">
+                        <div class="col-xs-2">Delivery</div>
+                        <div class="col-xs-4 location-dd">
+                            <md-autocomplete md-selected-item="$ctrl.deliveryObj.routeDetails.deliveryCountry"
+                                             md-search-text="searchDelivery"
+                                             md-item-text="item.name"
+                                             md-items="item in $ctrl.query(searchDelivery)"
+                                             placeholder="Enter country name" md-selected-item-change="$ctrl.selectedCountryChange()"
+                                             md-require-match
+                                             required>
+                                <md-item-template>
+                                    <img class="flag-img" ng-src="{{item.flag}}" />
+                                    <span class="result" md-highlight-text="searchDelivery">{{item.name}}</span>
+                                </md-item-template>
+                            </md-autocomplete>
+                        </div>
+                        <div class="col-xs-6 address">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Address</label>
+                                <textarea name="delivery-address" ng-model="$ctrl.deliveryObj.routeDetails.deliveryAddress" required md-maxlength="50" autocomplete="off"></textarea>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="panel panel-primary freight-panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Freight details</h3>
+                <i class="glyphicon glyphicon-ok" ng-if="$ctrl.forms.freightForm.$valid"></i>
+            </div>
+            <div class="panel-body">
+                <form name="$ctrl.forms.freightForm" novalidate>
+                    <div class="col-xs-3 label-type">Type of goods:</div>
+                    <div class="row col-xs-9">
+                        <md-radio-group id="typeOfGoods" class="pull-right" ng-model="$ctrl.deliveryObj.freightDetails.goodType">
+                            <md-radio-button ng-repeat="item in $ctrl.typeFields" ng-value="item">{{item}}</md-radio-button>
+                        </md-radio-group>
+                    </div>
+                    <div class="row col-xs-12">
+                        <div class="col-xs-12">Volume (L x W x H in cms)</div>
+                        <div class="col-xs-12 size-details">
+                            <md-input-container class="col-xs-2">
+                                <label>Density</label>
+                                <md-select ng-model="$ctrl.deliveryObj.freightDetails.density" required>
+                                    <md-option ng-repeat="item in $ctrl.densityFields" ng-value="item">{{item}}</md-option>
+                                </md-select>
+                            </md-input-container>
+                            <md-input-container class="col-xs-2">
+                                <label>Quantity</label>
+                                <md-select ng-model="$ctrl.deliveryObj.freightDetails.quantity" required>
+                                    <md-option disabled selected>None</md-option>
+                                    <md-option ng-value="1">1</md-option>
+                                    <md-option ng-value="2">2</md-option>
+                                    <md-option ng-value="3">3</md-option>
+                                </md-select>
+                            </md-input-container>
+                            <md-input-container class="col-xs-2">
+                                <label>Length</label>
+                                <input type="number" ng-model="$ctrl.deliveryObj.freightDetails.length" min="1" max="10000" required>
+                            </md-input-container>
+                            <span class="col-xs-1 cross">X</span>
+                            <md-input-container class="col-xs-2">
+                                <label>Width</label>
+                                <input type="number" ng-model="$ctrl.deliveryObj.freightDetails.width" min="1" max="10000" required>
+                            </md-input-container>
+                            <span class="col-xs-1 cross">X</span>
+                            <md-input-container class="col-xs-2">
+                                <label>Height</label>
+                                <input type="number" ng-model="$ctrl.deliveryObj.freightDetails.height" min="1" max="10000" required>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="weight-container">
+                        <div class="col-xs-1 weight-label">Weight</div>
+                        <md-input-container class="col-xs-2">
+                            <label>freight wt.</label>
+                            <input type="number" ng-model="$ctrl.deliveryObj.freightDetails.weight" min="1" max="1000" required>
+                            <span class="unit-label">kgs</span>
+                        </md-input-container>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="panel panel-primary date-panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Date & Time</h3>
+                <i class="glyphicon glyphicon-ok" ng-if="$ctrl.forms.dateTimeForm.$valid"></i>
+            </div>
+            <div class="panel-body">
+                <form name="$ctrl.forms.dateTimeForm" novalidate>
+                    <div class="row">
+                        <div class="col-xs-2">Pickup Date</div>
+                        <md-datepicker class="col-xs-3" ng-model="$ctrl.deliveryObj.dateTimeDetails.pickupDate" md-min-date="$ctrl.minDate" required></md-datepicker>
+                        <div class="col-xs-2 col-xs-offset-1">Pickup time(CET)</div>
+                        <md-slider class="col-xs-3 md-primary" flex md-discrete ng-model="$ctrl.deliveryObj.dateTimeDetails.pickupTime" step="1" min="7" max="18" aria-label="time" required>
+                        </md-slider>
+                    </div>
+                    <div class="col-xs-3 col-xs-offset-9 time" ng-if="$ctrl.deliveryObj.dateTimeDetails.pickupTime">{{$ctrl.deliveryObj.dateTimeDetails.pickupTime + '.00'}} - {{$ctrl.deliveryObj.dateTimeDetails.pickupTime + 1 + '.00'}}</div>
+                    <div class="row">
+                        <div class="col-xs-2">Delivery Date</div>
+                        <md-datepicker class="col-xs-3" ng-model="$ctrl.deliveryObj.dateTimeDetails.deliveryDate" md-min-date="$ctrl.deliveryObj.dateTimeDetails.pickupDate" required></md-datepicker>
+                        <div class="col-xs-2 col-xs-offset-1">Delivery Time(CET)</div>
+                        <md-slider class="col-xs-3 md-primary" flex md-discrete ng-model="$ctrl.deliveryObj.dateTimeDetails.deliveryTime" step="1" min="7" max="18" aria-label="time" required >
+                        </md-slider>
+                    </div>
+                    <div class="col-xs-3 col-xs-offset-9 time" ng-if="$ctrl.deliveryObj.dateTimeDetails.deliveryTime">{{$ctrl.deliveryObj.dateTimeDetails.deliveryTime + '.00'}} - {{$ctrl.deliveryObj.dateTimeDetails.deliveryTime + 1 + '.00'}}</div>
+                </form>
+            </div>
+        </section>
+
+        <section layout="row form-buttons" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button class="md-primary md-raised" ng-disabled="!($ctrl.forms.routeForm.$valid && $ctrl.forms.freightForm.$valid && $ctrl.forms.dateTimeForm.$valid)" ng-click="$ctrl.showConfirmForSubmit($event)">
+                Submit
+            </md-button>
+            <md-button class="md-primary md-raised" ng-click="$ctrl.showConfirmForReset($event)" >
+                Reset
+            </md-button>
+        </section>
+    </div>
+    <div class="container-fluid">
+        <div class="g-maps col-xs-4">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d2613458.0317228143!2d6.033155789331907!3d50.23207296996133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x479e7600b4a01453%3A0x316a8592ea327bab!2sZOB+Munich%2C+Arnulfstra%C3%9Fe%2C+Munich!3m2!1d48.142232799999995!2d11.5498368!4m5!1s0x47c63fb5949a7755%3A0x6600fd4cb7c0af8d!2sAmsterdam%2C+Netherlands!3m2!1d52.367984299999996!2d4.9035614!5e0!3m2!1sen!2sde!4v1548702335947" width="600" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <section class="billing-panel col-xs-4" ng-if="$ctrl.forms.routeForm.$valid && $ctrl.forms.freightForm.$valid && $ctrl.forms.dateTimeForm.$valid">
+            <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Billing Summary</h3>
+            </div>
+            <div class="panel-body">
+                    <div class="row">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <td>Order Placed by</td>
+                                <td>{{$ctrl.name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Route</td>
+                                <td>
+                                    From {{$ctrl.deliveryObj.routeDetails.pickupCountry.name}}
+                                    To {{$ctrl.deliveryObj.routeDetails.deliveryCountry.name}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Estimated Distance</td>
+                                <td>{{$ctrl.deliveryObj.calculations.estimatedDistance}} kms</td>
+                            </tr>
+                            <tr>
+                                <td>Estimated Fare</td>
+                                <td>{{$ctrl.deliveryObj.calculations.estimatedFare}} euros</td>
+                            </tr>
+                            <tr>
+                                <td>Pickup Date</td>
+                                <td>{{$ctrl.deliveryObj.dateTimeDetails.pickupDate.toLocaleDateString()}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+            </div>
+        </section>
+
+    </div>
+</div>
